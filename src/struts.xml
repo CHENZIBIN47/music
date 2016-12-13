@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="User" extends="struts-default" namespace="/">
+        
+        <action name="user*" class="cn.chan.action.UserAction" method="{1}">
+
+            <result name="toregist" type="redirect">/music/regist.jsp</result>
+            <result name="doRegist">/music/regist.jsp</result>
+
+            <!--登录失败跳转到登录页面-->
+            <result name="toLogin">/music/login.jsp</result>
+
+            <!--登陆成功跳转到主页-->
+            <result name="doLogin">/music/index.jsp</result>
+        </action>
+    </package>
+
+    
+</struts>
