@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
 
+import java.util.List;
+
 public class UserTest {
 
     @Test
@@ -55,6 +57,21 @@ public class UserTest {
         query.setString("username","chen");
         User user = (User) query.uniqueResult();
         System.out.println(user.getPassword());
+
+    }
+
+
+    @Test
+    public void findAll()
+    {
+        Session session = HibernateUtil.getSession();
+        String hql = "from User ";
+        Query query = session.createQuery(hql);
+        List<User> userList = query.list();
+        for (User user :userList) {
+            System.out.println(user.getUsername());
+        }
+
 
     }
 }

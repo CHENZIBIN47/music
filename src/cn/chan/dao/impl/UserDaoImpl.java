@@ -7,6 +7,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 
 public class UserDaoImpl implements UserDao {
 
@@ -50,6 +52,22 @@ public class UserDaoImpl implements UserDao {
         User user = (User) query.uniqueResult();
 
         return user;
+    }
+
+
+    /**
+     * 查找所有的用户
+     * @return
+     */
+    public List<User> findAll() {
+
+        Session session = HibernateUtil.getSession();
+        String hql = "from User ";
+        Query query = session.createQuery(hql);
+        List<User> userList = query.list();
+
+
+        return userList;
     }
 
 

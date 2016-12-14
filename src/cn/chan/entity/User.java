@@ -2,6 +2,8 @@ package cn.chan.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "music_user")
@@ -22,6 +24,18 @@ public class User {
     private boolean state;//状态码
     @Transient      //忽略某个字段
     private String vercode;//验证码
+
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "userid")
+    private Set<UserCollection> userCollectionSet = new HashSet<UserCollection>();
+
+    public Set<UserCollection> getUserCollectionSet() {
+        return userCollectionSet;
+    }
+
+    public void setUserCollectionSet(Set<UserCollection> userCollectionSet) {
+        this.userCollectionSet = userCollectionSet;
+    }
 
     public User() {
     }

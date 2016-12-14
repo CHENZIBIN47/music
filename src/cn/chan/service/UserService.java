@@ -3,6 +3,8 @@ package cn.chan.service;
 
 import cn.chan.entity.User;
 
+import java.util.List;
+
 public interface UserService {
 
 
@@ -19,5 +21,11 @@ public interface UserService {
      * @return
      */
     public User login(User form);
+
+    /**
+     * 查找所有的用户
+     * @return
+     */
+    public List<User> findAll();
 
 }

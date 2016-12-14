@@ -5,6 +5,8 @@ import cn.chan.dao.impl.UserDaoImpl;
 import cn.chan.entity.User;
 import cn.chan.service.UserService;
 
+import java.util.List;
+
 
 public class UserServiceImpl implements UserService {
 
@@ -31,5 +33,15 @@ public class UserServiceImpl implements UserService {
         if(!user.getPassword().equals(form.getPassword()))return null;
 
         return user;
+    }
+
+    /**
+     * 查找所有的用户
+     * @return
+     */
+    public List<User> findAll() {
+        List<User> userList = userDao.findAll();
+
+        return userList;
     }
 }

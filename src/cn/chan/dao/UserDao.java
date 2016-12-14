@@ -3,6 +3,8 @@ package cn.chan.dao;
 
 import cn.chan.entity.User;
 
+import java.util.List;
+
 public interface UserDao {
 
     /**
@@ -18,4 +20,12 @@ public interface UserDao {
      * @return
      */
     public User login(String username);
+
+
+    /**
+     * 查找所有的用户
+     * @return
+     */
+    public List<User> findAll();
+
 }

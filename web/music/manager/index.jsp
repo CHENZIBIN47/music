@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -105,8 +106,8 @@ var a=1;
 	</div>
 	<div class="login">
 		<ul>
-			<li><span>您好：${admin }</span></li>
-			<li><a href="<c:url value='/UserServlet?method=exitManager'/>" class="header_a">注销</a></li>
+			<li><span>您好：</span></li>
+			<li><a href="" class="header_a">注销</a></li>
 		</ul>
 	</div>	
 </div>
@@ -119,29 +120,29 @@ var a=1;
         	<li>
             	<a class="a_list a_list1">歌曲管理</a>
                 <div class="menu_list menu_list_first">
-                	<a href="<c:url value='/music/manager/addsong.jsp'/>">添加歌曲</a>
-                    <a href="<c:url value='/SongServlet?method=findAllSong'/>">查看歌曲</a>
+                	<a href="">添加歌曲</a>
+                    <a href="">查看歌曲</a>
                 </div>
             </li>
             <li>
             	<a class="a_list a_list2">歌手管理</a>
                 <div class="menu_list">
-                	<a href="<c:url value='/music/manager/addsinger.jsp'/>">添加歌手</a>
-                    <a href="<c:url value='/SingerServlet?method=findAllSinger'/>">查看歌手</a>
+                	<a href="">添加歌手</a>
+                    <a href="">查看歌手</a>
                 </div>
             </li>
              <li>
             	<a class="a_list a_list3">专辑管理</a>
                 <div class="menu_list">
-                	<a href="<c:url value='/music/manager/addalbum.jsp'/>">添加专辑</a>
-                    <a href="<c:url value='/AlbumServlet?method=findAllAlbum'/>">查看专辑</a>
+                	<a href="">添加专辑</a>
+                    <a href="">查看专辑</a>
                 </div>
             </li>
             <li>
             	<a class="a_list a_list3">用户管理</a>
                 <div class="menu_list">
                 	
-                    <a href="<c:url value='/UserServlet?method=findAllUser'/>">查看用户</a>
+                    <a href="/userfindAll.action">查看用户</a>
                 </div>
             </li>
         
@@ -152,15 +153,15 @@ var a=1;
 </div>
 	<div id="aaa">
 	<table class="table_list">
-		    <c:forEach items="${allSong }" begin="1" end="1">
+		    <%--<c:forEach items="${allSong }" begin="1" end="1">
 		 	<tr>
 				<th>歌曲</th>
 				<th>歌手</th>
 				<th>专辑</th>
 				<th>操作</th>	
 			</tr>
-			</c:forEach>
-			<c:forEach items="${allSong }" var="as">
+			</c:forEach>--%>
+	<%--		<c:forEach items="${allSong }" var="as">
 		
 			<tr>
 				<td><input type="text" name="input1" value="${as.songname }" disabled="true" class="q"/></td>
@@ -244,8 +245,16 @@ var a=1;
 			
 			</tr>
 		
-		</c:forEach>
-	
+		</c:forEach>--%>
+	<s:iterator value="userList" var="user">
+
+
+		<tr>
+			<td><s:property value="#user.username"/> </td>
+			<td><s:property value="#user.password"/> </td>
+
+		</tr>
+	</s:iterator>
 	
 	</table>
 	</div>

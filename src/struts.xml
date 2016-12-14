@@ -16,7 +16,9 @@
             <result name="toLogin">/music/login.jsp</result>
 
             <!--登陆成功跳转到主页-->
-            <result name="doLogin">/music/index.jsp</result>
+            <result name="doLogin" type="redirect">/music/index.jsp</result>
+
+            <result name="allUser">/music/manager/index.jsp</result>
         </action>
     </package>
 
