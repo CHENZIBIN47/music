@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%@include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -8,6 +8,14 @@
 	<link href="music/css/header.css" type="text/css" rel="Stylesheet" />
 	<link href="music/css/regist.css" type="text/css" rel="Stylesheet" />
 
+	<script>
+
+		function changeImage()
+		{
+			var img = document.getElementById("verCode");
+			img.src="<s:url value="/verifyCode.action"/>?xxx="+new Date().getTime();
+		};
+	</script>
 </head>
 <body>
 
@@ -58,9 +66,10 @@
 				<td class="tis">&nbsp </td>
 			</tr>
 			<tr>
+
 				<td align="right">验证码:</td>
 				<td><input type="text" class="vft"/></td>
-				<td><img width="110px" src="images/verCode.png"/></td>
+				<td><img width="110px" id="verCode" src="<s:url value="/verifyCode.action"/>"/><a href="javascript:changeImage()">换一张</a></td>
 				<td class="tis">&nbsp </td>
 			</tr>
 			<tr>

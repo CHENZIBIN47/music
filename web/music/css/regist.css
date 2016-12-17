@@ -1,3 +1,14 @@
+.password{
+
+    height: 30px;
+    width: 350px;
+}
+.repassword{
+    height: 30px;
+    width: 350px;
+
+}
+
 .username,.passwords,.psw{
 height: 30px;
 width: 350px;

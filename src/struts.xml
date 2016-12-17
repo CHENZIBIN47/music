@@ -20,6 +20,7 @@
 
             <result name="allUser">/music/manager/index.jsp</result>
         </action>
+        <action name="verifyCode" class="cn.chan.action.VerifyCodeAction"></action>
     </package>
 
     
