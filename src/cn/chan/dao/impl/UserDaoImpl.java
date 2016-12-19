@@ -70,5 +70,31 @@ public class UserDaoImpl implements UserDao {
         return userList;
     }
 
+    @Override
+    public void updateState(Integer userId, Boolean state) {
+
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSession();
+            transaction = session.beginTransaction();
+            User user = (User) session.get(User.class, userId);
+            user.setState(true);
+            session.update(user);
+
+
+            transaction.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            HibernateUtil.closeSession();
+        }
+
+
+    }
+
 
 }

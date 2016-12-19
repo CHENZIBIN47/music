@@ -7,8 +7,15 @@ import cn.chan.service.impl.UserServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Properties;
 
 public class UserAction extends ActionSupport{
 
@@ -43,14 +50,77 @@ public class UserAction extends ActionSupport{
      * 用户注册
      * @return
      */
-    public String doRegist()
-    {
+    public String doRegist() throws Exception {
 
-        userService.regist(user);
-        return "doRegist";
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String verifyCode = (String) request.getSession().getAttribute("verifyCode");
+        if(!verifyCode.equalsIgnoreCase(user.getVercode()))
+        {
+
+            request.setAttribute("verifyCodeError","验证码错误");
+            request.setAttribute("user",user);
+            return "doRegist";
+        }
+        else{
+            userService.regist(user);
+            final Properties props = new Properties();
+
+            // 表示SMTP发送邮件，需要进行身份验证
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.host", "smtp.126.com");
+
+            // 发件人的账号
+            props.put("mail.user", "binter_chen@126.com");
+
+            // 访问SMTP服务时需要提供的密码
+            props.put("mail.password", "chen0337");
+
+            // 构建授权信息，用于进行SMTP进行身份验证
+            Authenticator authenticator = new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    // 用户名、密码
+                    String userName = props.getProperty("mail.user");
+                    String password = props.getProperty("mail.password");
+                    return new PasswordAuthentication(userName, password);
+                }
+            };
+
+            /**
+             * 用户注册时发送邮箱
+             */
+            // 使用环境属性和授权信息，创建邮件会话
+            Session mailSession = Session.getDefaultInstance(props, authenticator);
+            MimeMessage message = new MimeMessage(mailSession);
+            InternetAddress fm = null;
+
+                fm = new InternetAddress(props.getProperty("mail.user"));
+
+
+            message.setFrom(fm);
+
+            // 设置收件人
+            InternetAddress to = new InternetAddress(user.getEmail());
+
+            message.setRecipient(MimeMessage.RecipientType.TO, to);
+
+            // 设置邮件标题
+            message.setSubject("邮箱激活");
+            message.setContent("<h1><a href='http://localhost:8080/"+"useractive.action?userid="+user.getUserid()+"'>点击完成激活</a></h1>", "text/html;charset=gbk");
+//
+            // 发送邮件
+            Transport.send(message);
+            return "doLogin";
+        }
+
     }
 
 
+    /**
+     * 用户登录
+     * @return
+     */
     public String doLogin()
     {
 
@@ -62,13 +132,35 @@ public class UserAction extends ActionSupport{
         User user1 = userService.login(form);
         if(user1 == null)
         {
+            request.setAttribute("mes","用户名或密码错误");
+            request.setAttribute("user",form);
             return "toLogin";
-        }else {
+        }else if (!user1.isState())
+        {
+            request.setAttribute("mes","您还没有激活");
+            request.setAttribute("user",form);
+            return "toLogin";
+
+        } else {
 
             request.getSession().setAttribute("username",username);
             return "doLogin";
         }
 
+    }
+
+
+    public String active()
+    {
+
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String userid = request.getParameter("userid");
+        Integer userId = Integer.parseInt(userid);
+        userService.updateState(userId);
+        request.setAttribute("mes", "激活成功");
+
+        return "activation";
     }
 
 

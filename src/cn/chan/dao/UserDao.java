@@ -28,4 +28,12 @@ public interface UserDao {
      */
     public List<User> findAll();
 
+
+    /**
+     * 用户激活
+     * @param userId
+     * @param state
+     */
+    public void updateState(Integer userId,Boolean state);
+
 }

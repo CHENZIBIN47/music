@@ -16,7 +16,9 @@
         <datasource-map>
           <unit-entry name="hibernate.cfg.xml" value="4b849690-0e6a-47b1-9a48-a5278c3d60f0" />
         </datasource-map>
-        <naming-strategy-map />
+        <naming-strategy-map>
+          <unit-entry name="hibernate.cfg.xml" />
+        </naming-strategy-map>
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
       </configuration>
     </facet>
@@ -47,5 +49,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="ssh lib" level="project" />
+    <orderEntry type="library" name="mail" level="project" />
   </component>
 </module>

@@ -28,4 +28,13 @@ public interface UserService {
      */
     public List<User> findAll();
 
+
+
+    /**
+     * 用户激活
+     * @param userId
+     *
+     */
+    public void updateState(Integer userId);
+
 }

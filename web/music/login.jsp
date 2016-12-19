@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%@include file="header.jsp" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -27,13 +27,17 @@
 		<table  width="100%" border="0">
 			<tr>
 				<td align="right">用户名:</td>
-				<td colspan="2"><input type="text" name="username" class="username"/></td>
-				<%--<td><p style="color:red">${message }</p></td>--%>
+				<td colspan="2">
+					<input type="text" name="username" class="username" value="<s:property value="#request.user.username"/>"/>
+				</td>
+				<td><p style="color:red"><s:property value="#request.mes"/> </p></td>
 			</tr>
 			<tr>
 				<td align="right">密码:</td>
-				<td colspan="2"><input type="password" name="password" class="password" value=""/></td>
-				<td class="tis"></td>				
+				<td colspan="2">
+					<input type="password" name="password" class="password" value="<s:property value="#request.user.password"/>"/>
+				</td>
+				<td class="tis" ></td>
 			</tr>
 		
 			<tr>

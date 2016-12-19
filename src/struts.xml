@@ -6,8 +6,24 @@
 
 <struts>
     <package name="User" extends="struts-default" namespace="/">
+
+        <!--定义拦截器-->
+        <!--<interceptors>
+            <interceptor name="loginintercept" class="cn.chan.interceptor.LoginInterceptor"></interceptor>
+        </interceptors>-->
         
         <action name="user*" class="cn.chan.action.UserAction" method="{1}">
+
+            <!--使用定义拦截器-->
+           <!-- <interceptor-ref name="loginintercept">
+
+                &lt;!&ndash;忽略拦截的方法&ndash;&gt;
+                <param name="excludeMethods">doLogin</param>
+            </interceptor-ref>
+
+            &lt;!&ndash; 3 把默认拦截器手动使用一次 &ndash;&gt;
+            <interceptor-ref name="defaultStack"></interceptor-ref>-->
+
 
             <result name="toregist" type="redirect">/music/regist.jsp</result>
             <result name="doRegist">/music/regist.jsp</result>
@@ -19,6 +35,9 @@
             <result name="doLogin" type="redirect">/music/index.jsp</result>
 
             <result name="allUser">/music/manager/index.jsp</result>
+
+            <!--用户激活-->
+            <result name="activation">/music/message.jsp</result>
         </action>
         <action name="verifyCode" class="cn.chan.action.VerifyCodeAction"></action>
     </package>

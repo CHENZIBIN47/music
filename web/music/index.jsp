@@ -37,9 +37,8 @@
 		</div>
 		<div class = "slide">
 			<ul>
-				<li><a href="<c:url value='/SongServlet?method=viewSong&singerName=五月天'/>"><img src="music/images/1.jpg" class="1"></a></li>
-				<li><a href="<c:url value='/SongServlet?method=viewSong&singerName=听见'/>"><img src="music/images/5.jpg" class="2"></a></li>
-				<li><a href="<c:url value='/SongServlet?method=view&singerName=One Direction'/>"><img src="music/images/9.jpg" class="3"></a></li>
+				<li><a href=""><img src="music/images/1.jpg" class="1"></a></li>
+				<li><a href=""><img src="music/images/5.jpg" class="2"></a></li><img src="music/images/9.jpg" class="3"></a></li>
 				<li><a href="javascript:;"><img src="music/images/13.jpg" class="4"></a></li>
 				<li><a href="javascript:;"><img src="music/images/17.jpg" class="5"></a></li>
 			</ul>
@@ -59,19 +58,19 @@
 					<h3>华语</h3>
 					<div class="show">
 						<div></div>
-						<a href="<c:url value='/SongServlet?method=viewSong&singerName=薛之谦'/>"><img class="img" src="music/images/xuezhiqian.jpg" title="薛之谦"/></a>
-						<a href="<c:url value='/SongServlet?method=viewSong&singerName=林宥嘉'/>"><img class="img" src="music/images/linyoujia.jpg" title="林宥嘉"/></a>
-						<a href="<c:url value='/SongServlet?method=viewSong&singerName=陈奕迅'/>"><img class="img" src="music/images/chenyixun.jpg" title="陈奕迅"/></a>
-						<a href="<c:url value='/SongServlet?method=viewSong&singerName=邓紫棋'/>"><img class="img" class="img" src="music/images/dengziqi.jpg" title="邓紫棋"/></a>
+						<a href=""><img class="img" src="music/images/xuezhiqian.jpg" title="薛之谦"/></a>
+						<a href=""><img class="img" src="music/images/linyoujia.jpg" title="林宥嘉"/></a>
+						<a href=""><img class="img" src="music/images/chenyixun.jpg" title="陈奕迅"/></a>
+						<a href=""><img class="img" class="img" src="music/images/dengziqi.jpg" title="邓紫棋"/></a>
 					</div>                 
 				</li>
 				<li class="ti2">
 					<h3>英语</h3>
 					<div class="show">
-						<a href="<c:url value='/SongServlet?method=viewSong&singerName=Rihanna'/>"><img class="img" src="music/images/Riha.jpg" title="Rihanna"/></a>
-						<a href="<c:url value='/SongServlet?method=viewSong&singerName=Katy Perry'/>"><img class="img" src="music/images/kp.jpg" title="Katy Perry"/></a>
-						<a href="<c:url value='/SongServlet?method=viewSong&singerName=Alan Walker'/>"><img class="img" src="music/images/aw.jpg" title="Alan Walker"/></a>
-						<a href="<c:url value='/SongServlet?method=viewSong&singerName=Justin Bieber'/>"><img class="img" src="music/images/jb.jpg" title="Justin Bieber"/></a>
+						<a href=""><img class="img" src="music/images/Riha.jpg" title="Rihanna"/></a>
+						<a href=""><img class="img" src="music/images/kp.jpg" title="Katy Perry"/></a>
+						<a href=""><img class="img" src="music/images/aw.jpg" title="Alan Walker"/></a>
+						<a href=""><img class="img" src="music/images/jb.jpg" title="Justin Bieber"/></a>
 					</div>
 				</li>
 				<li class="ti3">
@@ -110,11 +109,11 @@
 	<div class="table" >
 		<dl>
 		
-			<dt><a href="<c:url value='/SongServlet?method=viewSong&singerName=模特'/>"><img src="music/images/24.jpg"/><p class="txt"></p></a></dt>
+			<dt><a href=""><img src="music/images/24.jpg"/><p class="txt"></p></a></dt>
 			<dd><p><a class="musicsong" href="javascript:;">模特</a></p><a class="musicsinger" href="javascript:;">李荣浩</a></dd>
 		</dl>
 		<dl>
-			<dt><a href="<c:url value='/SongServlet?method=viewSong&singerName=绅士'/>"><img src="music/images/28.jpg"/><p class="txt"></p></a></dt>
+			<dt><a href=""><img src="music/images/28.jpg"/><p class="txt"></p></a></dt>
 			
 			<dd><p><a class="musicsong" href="javascript:;">绅士</a></p><a class="musicsinger" href="javascript:;">薛之谦</a></dd>
 		</dl>
@@ -125,15 +124,15 @@
 		<dl>
 	
 		
-			<dt><a href="<c:url value='/SongServlet?method=viewSong&singerName=初爱'/>"><img src="music/images/26.jpg"/><p class="txt"></p></a></dt>
+			<dt><a href=""><img src="music/images/26.jpg"/><p class="txt"></p></a></dt>
 			<dd><p><a class="musicsong" href="javascript:;">初爱</a></p><a class="musicsinger" href="javascript:;">杨宗纬</a></dd>
 		</dl>
 		<dl>
-			<dt><a href="<c:url value='/SongServlet?method=viewSong&singerName=See You Again'/>"><img src="music/images/39.jpg"/><p class="txt"></p></a></dt>
+			<dt><a href=""><img src="music/images/39.jpg"/><p class="txt"></p></a></dt>
 			<dd><p><a class="musicsong" href="javascript:;">See You Again</a></p><a class="musicsinger" href="javascript:;">查理</a></dd>
 		</dl>
 		<dl>
-			<dt><a href="<c:url value='/SongServlet?method=viewSong&singerName=Only Girl'/>"><img src="music/images/40.jpg"/><p class="txt"></p></a></dt>
+			<dt><a href=""><img src="music/images/40.jpg"/><p class="txt"></p></a></dt>
 			<dd><p><a class="musicsong" href="javascript:;">Only Girl</a></p><a class="musicsinger" href="javascript:;">蕾哈娜</a></dd>
 		</dl>
 		<dl>
@@ -155,9 +154,9 @@
 <script type="text/javascript" src="music/js/index.js"></script>
 <script>
 //热门歌手事件
-$(".img").click(function(){
-	$(this).parent().attr("href","<c:url value='/SongServlet?method=viewSong&singerName='/>"+$(this).attr("title"));
-});
+<%--/*$(".img").click(function(){--%>
+	<%--$(this).parent().attr("href","<c:url value='?method=viewSong&singerName='/>"+$(this).attr("title"));--%>
+<%--});*/--%>
 </script>
 </body>
 

@@ -44,4 +44,11 @@ public class UserServiceImpl implements UserService {
 
         return userList;
     }
+
+
+
+    @Override
+    public void updateState(Integer userId) {
+        userDao.updateState(userId,true);
+    }
 }
