@@ -70,6 +70,11 @@ public class UserDaoImpl implements UserDao {
         return userList;
     }
 
+    /**
+     * 用户激活
+     * @param userId
+     * @param state
+     */
     @Override
     public void updateState(Integer userId, Boolean state) {
 
