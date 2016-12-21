@@ -11,7 +11,9 @@
         <!--<interceptors>
             <interceptor name="loginintercept" class="cn.chan.interceptor.LoginInterceptor"></interceptor>
         </interceptors>-->
-        
+
+
+        <!--用户-->
         <action name="user*" class="cn.chan.action.UserAction" method="{1}">
 
             <!--使用定义拦截器-->
@@ -38,8 +40,20 @@
 
             <!--用户激活-->
             <result name="activation">/music/message.jsp</result>
+
+
         </action>
+
+        <!--验证码-->
         <action name="verifyCode" class="cn.chan.action.VerifyCodeAction"></action>
+
+
+        <!--歌曲-->
+        <action name="song*" class="cn.chan.action.SongAction" method="{1}">
+
+            <result name="addSong">/music/manager/index.jsp</result>
+
+        </action>
     </package>
 
     

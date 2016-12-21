@@ -101,5 +101,44 @@ public class UserDaoImpl implements UserDao {
 
     }
 
+    /**
+     *检查用户名是否存在
+     * @param username
+     * @return
+     */
+    @Override
+    public User checkUsername(String username) {
+
+
+        Session session = HibernateUtil.getSession();
+        String hql = "from User u where u.username=:username";
+        Query query = session.createQuery(hql);
+        query.setString("username",username);
+        User user = (User) query.uniqueResult();
+
+        return user;
+
+    }
+
+
+    /**
+     * 检查邮箱是否存在
+     * @param email
+     * @return
+     */
+    @Override
+    public User checkEmail(String email) {
+
+
+        Session session = HibernateUtil.getSession();
+        String hql = "from User u where u.email=:email";
+        Query query = session.createQuery(hql);
+        query.setString("email",email);
+        User user = (User) query.uniqueResult();
+
+        return user;
+
+    }
+
 
 }

@@ -21,4 +21,17 @@ public class SingerTest {
 
     }
 
+    @Test
+    public void delete()
+    {
+        SingerService singerService = new SingerServiceImpl();
+        singerService.delete(3);
+
+
+    }
+
+
+
+
+
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -74,46 +74,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<div class="login">
 		<ul>
-			<li><span>您好：${admin }</span></li>
-			<li><a href="<c:url value='/UserServlet?method=exitManager'/>" class="header_a">注销</a></li>
+			<li><span>您好：</span></li>
+			<li><a href="" class="header_a">注销</a></li>
 		</ul>
 	</div>	
 </div>
 
 
 <div id="addsong">
-	<form id="formid"  name= "myform" method = 'post'  action ="<c:url value='/SongServlet?method=addSong'/>" onsubmit = "return checkUser();" >
+	<form id="formid"  name= "myform" method = 'post'  action ="<s:url value="/songadd.action"/>" onsubmit = "return checkUser();" >
 		<table  width="100%" border="0">
 			<tr>
 				<td id="songs">歌名</td>
-				<td><input type="text" id="textid" name="songname"></td>
+				<td><input type="text" id="textid" name="song.songname"></td>
 							
 			</tr>
 		
 			<tr>
 				<td id="songs">歌手</td>
-				<td><input type="text" id="textid" name="singername"></td>
-				<td><p style="color:red">${songname }</p></td>
+				<td><input type="text" id="textid" name="song.singername"></td>
+				<td><p style="color:red"></p></td>
 			</tr>
 			
 			<tr>
 				<td id="songs">路径</td>
-				<td><input type="text" id="textid" name="path"></td>
+				<td><input type="text" id="textid" name="song.path"></td>
 			</tr>
 			
 			<tr>
 				<td id="songs">所属专辑</td>
-				<td><input type="text" id="textid" name="album"></td>
+				<td><input type="text" id="textid" name="song.album"></td>
 			</tr>
 			
 			<tr>
 				<td id="songs">类型</td>
-				<td><input type="text" id="textid" name="type"></td>
+				<td><input type="text" id="textid" name="song.songtype"></td>
 			</tr>
 		
 			<tr>
 				<td id="songs">热度</td>
-				<td><input type="text" id="textid" name="heat"></td>
+				<td><input type="text" id="textid" name="song.heat"></td>
 			</tr>
 		
 			<tr>

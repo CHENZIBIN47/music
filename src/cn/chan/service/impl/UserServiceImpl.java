@@ -46,9 +46,50 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
+    /**
+     * 用户激活
+     * @param userId
+     */
     @Override
     public void updateState(Integer userId) {
         userDao.updateState(userId,true);
+    }
+
+
+    /**
+     * 检查用户是否存在
+     * @param username
+     * @return
+     */
+    @Override
+    public User checkUsername(String username) {
+
+        User user = userDao.checkUsername(username);
+        if(user == null)
+        {
+
+            return null;
+        }else{
+            return user;
+        }
+    }
+
+
+    /**
+     * 验证邮箱是否存在
+     * @param email
+     * @return
+     */
+    @Override
+    public User checkEmail(String email) {
+
+        User user = userDao.checkEmail(email);
+        if(user == null)
+        {
+            return null;
+        }else {
+
+            return user;
+        }
     }
 }

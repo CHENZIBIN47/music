@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -66,20 +66,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<div class="login">
 		<ul>
-			<li><span>您好:${admin }</span></li>
-			<li><a href="<c:url value='/UserServlet?method=exitManager'/>" class="header_a">注销</a></li>
+			<li><span>您好:</span></li>
+			<li><a href="" class="header_a">注销</a></li>
 		</ul>
 	</div>	
 </div>
 	
 	
 	<div id="addsinger">
-		<form  action="<c:url value='/SingerServlet?method=addSinger'/>" id="formid"  name= "myform" method = 'post' onsubmit = "return checkUser();" enctype="multipart/form-data">
+		<form  action="" id="formid"  name= "myform" method = 'post' onsubmit = "return checkUser();" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td>歌手</td>
 					<td><input type="text" id="singers" name="singername"/></td>
-					<td><p style="color:red">${addsingername }</p></td>
+					<%--<td><p style="color:red">${addsingername }</p></td>--%>
 				</tr>
 				<tr>
 					<td>性别</td>

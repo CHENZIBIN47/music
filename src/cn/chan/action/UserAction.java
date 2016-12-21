@@ -14,6 +14,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
@@ -22,6 +24,24 @@ public class UserAction extends ActionSupport{
     UserService userService = new UserServiceImpl();
     private User user;
     private List<User> userList;
+    private String username;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public User getUser() {
         return user;
@@ -150,6 +170,10 @@ public class UserAction extends ActionSupport{
     }
 
 
+    /**
+     * 用户激活
+     * @return
+     */
     public String active()
     {
 
@@ -174,6 +198,48 @@ public class UserAction extends ActionSupport{
 
         userList = userService.findAll();
         return "allUser";
+    }
+
+
+    /**
+     * 检查用户名是否存在
+     * @return
+     */
+    public String checkUsername() throws IOException {
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setContentType("text/html;charset=utf-8");
+        User user = userService.checkUsername(username);
+        if(user == null){
+
+            response.getWriter().println("");
+
+//            request.setAttribute("username","可以注册");
+
+        }else {
+            response.getWriter().println("已经被注册");
+//            request.setAttribute("username","已经被注册了");
+        }
+        return NONE;
+    }
+
+
+    public String checkEmail() throws IOException {
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setContentType("text/html;charset=utf-8");
+
+        User user = userService.checkEmail(email);
+        if(user == null){
+
+            response.getWriter().println("");
+
+        }else {
+
+            response.getWriter().println("该邮箱已经被注册");
+        }
+
+        return NONE;
     }
 
 

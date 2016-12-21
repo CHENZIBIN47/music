@@ -36,4 +36,20 @@ public interface UserDao {
      */
     public void updateState(Integer userId,Boolean state);
 
+
+    /**
+     * 检查用户名是否存在
+     * @param username
+     * @return
+     */
+    public User checkUsername(String username);
+
+
+    /**
+     * 检查邮箱是否存在
+     * @param email
+     * @return
+     */
+    public User checkEmail(String email);
+
 }
