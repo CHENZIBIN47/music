@@ -7,6 +7,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 
 public class SingerDaoImpl implements SingerDao {
 
@@ -80,5 +82,22 @@ public class SingerDaoImpl implements SingerDao {
 
 
         return singer;
+    }
+
+
+    /**
+     * 查找所有歌手
+     * @return
+     */
+    @Override
+    public List<Singer> findAllSinger() {
+
+        Session session = HibernateUtil.getSession();
+        String hql = "from Singer";
+        Query query = session.createQuery(hql);
+
+        List<Singer> singerList = query.list();
+
+        return singerList;
     }
 }

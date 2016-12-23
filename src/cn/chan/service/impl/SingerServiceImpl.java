@@ -6,6 +6,8 @@ import cn.chan.dao.impl.SingerDaoImpl;
 import cn.chan.entity.Singer;
 import cn.chan.service.SingerService;
 
+import java.util.List;
+
 public class SingerServiceImpl implements SingerService{
 
     SingerDao singerDao = new SingerDaoImpl();
@@ -33,10 +35,27 @@ public class SingerServiceImpl implements SingerService{
         return null;
     }
 
+    /**
+     * 查找歌手
+     * @param singername
+     * @return
+     */
     @Override
     public Singer findSinger(String singername) {
 
         Singer singer = singerDao.findSinger(singername);
         return singer;
+    }
+
+    /**
+     * 查找所有歌手
+     * @return
+     */
+    @Override
+    public List<Singer> findAllSinger() {
+
+        List<Singer> singerList = singerDao.findAllSinger();
+
+        return singerList;
     }
 }

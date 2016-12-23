@@ -3,6 +3,8 @@ package cn.chan.dao;
 
 import cn.chan.entity.Singer;
 
+import java.util.List;
+
 public interface SingerDao {
 
 
@@ -26,6 +28,12 @@ public interface SingerDao {
      * @return
      */
     public Singer findSinger(String singername);
+
+    /**
+     * 查找所有歌手
+     * @return
+     */
+    public List<Singer> findAllSinger();
 
 
 }

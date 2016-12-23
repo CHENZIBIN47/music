@@ -54,6 +54,15 @@
             <result name="addSong">/music/manager/index.jsp</result>
 
         </action>
+
+        <action name="singer*" class="cn.chan.action.SingerAction" method="{1}">
+            <result name="addSinger">/music/manager/index.jsp</result>
+
+            <!--遍历所有歌手-->
+            <result name="allSinger">/music/singerlist.jsp</result>
+        </action>
+
+
     </package>
 
     

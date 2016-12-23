@@ -3,6 +3,8 @@ package cn.chan.service;
 
 import cn.chan.entity.Singer;
 
+import java.util.List;
+
 public interface SingerService {
 
     /**
@@ -26,6 +28,14 @@ public interface SingerService {
      * @return
      */
     public Singer findSinger(String singername);
+
+
+
+    /**
+     * 查找所有歌手
+     * @return
+     */
+    public List<Singer> findAllSinger();
 
 
 }

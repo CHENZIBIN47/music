@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%@include file="header.jsp" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -25,7 +26,7 @@
 	<div id="music_songers">
 		<center><h1>———————热门歌手——————</h1></center>
 		<dl class="singer_list_txt">				
-			<c:forEach items="${singername }" var="s">
+		<%--	<c:forEach items="${singername }" var="s">
 			<dd class="singer_txt">
 			
 			
@@ -39,7 +40,28 @@
 				</div>
 				
 			</dd>					
-			</c:forEach>
+			</c:forEach>--%>
+			<s:iterator value="singerList" var="singer">
+				<dd class="singer_txt">
+
+					<div>
+						<center>
+							<a href="">
+								<img src="<s:url value="/music/files/"/><s:property value="#singer.singerimage"/>"/>
+							</a>
+						</center>
+
+						<center>
+							<h3>
+								<a id="sname" href=""></a>
+							</h3>
+						</center>
+
+					</div>
+
+				</dd>
+
+			</s:iterator>
 		</dl>
 
 
