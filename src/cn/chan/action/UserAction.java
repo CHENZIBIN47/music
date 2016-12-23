@@ -26,6 +26,15 @@ public class UserAction extends ActionSupport{
     private List<User> userList;
     private String username;
     private String email;
+    private Integer uid;
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
 
     public String getEmail() {
         return email;
@@ -241,6 +250,19 @@ public class UserAction extends ActionSupport{
 
         return NONE;
     }
+
+
+    /**
+     * 删除用户
+     * @return
+     */
+    public String delUser()
+    {
+        userService.delUser(uid);
+        return "deleteUser";
+
+    }
+
 
 
 

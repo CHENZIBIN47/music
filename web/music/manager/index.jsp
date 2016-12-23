@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="S" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -101,7 +102,7 @@ var a=1;
 		
 	</ul>
 	<div class="header_text">
-		<input type="text" class="text" value="陈奕迅"/>
+		<input type="text" class="text" value=""/>
 		<input type="button" class="btn">
 	</div>
 	<div class="login">
@@ -128,7 +129,7 @@ var a=1;
             	<a class="a_list a_list2">歌手管理</a>
                 <div class="menu_list">
                 	<a href="">添加歌手</a>
-                    <a href="">查看歌手</a>
+                    <a href="/singerallSinger.action?result=after">查看歌手</a>
                 </div>
             </li>
              <li>
@@ -246,17 +247,72 @@ var a=1;
 			</tr>
 		
 		</c:forEach>--%>
-	<s:iterator value="userList" var="user">
 
 
-		<tr>
-			<td><s:property value="#user.username"/> </td>
-			<td><s:property value="#user.password"/> </td>
 
-		</tr>
-	</s:iterator>
+				<table class="table_list">
+					<s:if test="singerList">
+					<tr>
+						<th>歌手</th>
+						<th>性别</th>
+						<th>简介</th>
+						<th>操作</th>
+					</tr>
+					</s:if>
+					<s:iterator value="singerList" var="singer">
+						<tr>
+							<td><s:property value="#singer.singername"/></td>
+							<td><s:property value="#singer.sex"/></td>
+							<td><s:property value="#singer.singerinfo"/></td>
+							<td><a href="#">删除</a>|
+								<a href="#">修改</a>
+							</td>
+
+						</tr>
+
+
+					</s:iterator>
+				</table>
+
+				<table class="table_user">
+					<s:if test="userList">
+						<tr>
+							<th>用户名</th>
+							<th>密码</th>
+							<th>性别</th>
+							<th>邮箱</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</s:if>
+
+
+					<s:iterator value="userList" var="user">
+
+						<tr>
+							<td><s:property value="#user.username"/></td>
+							<td><s:property value="#user.password"/></td>
+							<td><s:property value="#user.sex"/></td>
+							<td><s:property value="#user.email"/></td>
+							<s:if test="#user.state">
+								<td>已激活</td>
+							</s:if>
+							<s:else>
+								<td>未激活</td>
+							</s:else>
+
+							<td>
+								<a id="delUser" href="userdelUser.action?uid=<s:property value="#user.userid"/>" onclick="if(confirm('是否删除？')==false)return false">删除</a>
+
+							</td>
+
+						</tr>
+
+					</s:iterator>
 	
 	</table>
 	</div>
   </body>
+
+
 </html>

@@ -92,4 +92,22 @@ public class UserServiceImpl implements UserService {
             return user;
         }
     }
+
+    /**
+     *
+     * @param uid
+     * @return
+     */
+    @Override
+    public Boolean delUser(Integer uid) {
+
+        try {
+            userDao.delUser(uid);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 }

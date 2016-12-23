@@ -41,6 +41,9 @@
             <!--用户激活-->
             <result name="activation">/music/message.jsp</result>
 
+            <!--删除用户-->
+            <result name="deleteUser" type="redirectAction">userfindAll.action</result>
+
 
         </action>
 
@@ -59,7 +62,8 @@
             <result name="addSinger">/music/manager/index.jsp</result>
 
             <!--遍历所有歌手-->
-            <result name="allSinger">/music/singerlist.jsp</result>
+            <result name="beforeAllSinger">/music/singerlist.jsp</result>
+            <result name="afterAllSinger">/music/manager/index.jsp</result>
         </action>
 
 

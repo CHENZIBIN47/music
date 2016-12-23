@@ -16,6 +16,15 @@ public class SingerAction extends ActionSupport{
     private Singer singer;
     private File photo;
     private String photoFileName;
+    private String result;
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
 
     private List<Singer> singerList;
 
@@ -76,9 +85,19 @@ public class SingerAction extends ActionSupport{
     {
 
         singerList = singerService.findAllSinger();
+
+        if(result.equals("before")){
+            return "beforeAllSinger";
+        }else if(result.equals("after"))
+        {
+            return "afterAllSinger";
+        }else {
+            return NONE;
+        }
+
+
         /*HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("singername",singerList);*/
-        return "allSinger";
     }
 
 

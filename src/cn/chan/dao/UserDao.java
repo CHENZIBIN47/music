@@ -52,4 +52,11 @@ public interface UserDao {
      */
     public User checkEmail(String email);
 
+    /**
+     * 删除用户
+     * @param uid
+     * @return
+     */
+    public Boolean delUser(Integer uid);
+
 }

@@ -140,5 +140,31 @@ public class UserDaoImpl implements UserDao {
 
     }
 
+    /**
+     * 删除用户
+     * @param uid
+     * @return
+     */
+    @Override
+    public Boolean delUser(Integer uid) {
+
+        Transaction tx = null;
+        try {
+            Session session = HibernateUtil.getSession();
+            tx = session.beginTransaction();
+            User user = (User) session.get(User.class,uid);
+            session.delete(user);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            HibernateUtil.closeSession();
+        }
+        return true;
+    }
+
 
 }
