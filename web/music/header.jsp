@@ -20,20 +20,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	
 	<link href="music/css/header.css" type="text/css" rel="Stylesheet" />
-	<%--<script type="text/javascript">
+	<script type="text/javascript">
 	
-			
+
 			function singername()
 			{
 				var textname = document.getElementById("vvv").value;
 				var aaa = document.getElementById("aaa");
-				aaa.href = "<c:url value='/SongServlet?method=viewSong&singerName='/>"+textname;
+				aaa.href = "/songfindSong.action?sname="+textname;
 				
 			};
 		
 		
 
-	</script>--%>
+	</script>
 	<style type="text/css">
 		#out{
 		
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<input type="text" class="text" id="vvv" name="singerName" value=""/>
 		
-		<a class="btn" id="aaa" href="JavaScript:singername();"></a>
+		<a class="btn" id="aaa" href="JavaScript:;" onclick="singername()"></a>
 		
 	</div>
 	<div class="login">
@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <div id="header_song">
 	<ul>
-		<li><a href="" class="header_a">首页</a></li>
+		<li><a href="/music/index.jsp" class="header_a">首页</a></li>
 		<li><a href="/singerallSinger.action?result=before" class="header_a">歌手</a></li>
 		<li><a href="" class="header_a">专辑</a></li>
 		<li><a href="" class="header_a">排行榜</a></li>

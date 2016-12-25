@@ -4,11 +4,11 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <!--配置四大参数-->
+        <!--配置四大参数
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql:///mydb5</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">123</property>
+        <property name="hibernate.connection.password">123</property>-->
 
         <!--输出底层的sql语句-->
         <property name="hibernate.show_sql">true</property>

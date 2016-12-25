@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -13,36 +14,38 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <!--使用配置文件-->
-    <!--<bean id="studentService" class="cn.chan.test.StudentService">
 
-        <property name="studentDao" ref="studentDao"></property>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql:///mydb5"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="123"></property>
+
     </bean>
-    <bean id="studentDao" class="cn.chan.test.StudentDao"></bean>-->
 
-    <!--使用注解-->
-    <!--<context:component-scan base-package="cn.chan"></context:component-scan>-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 
-
-    <bean id="customer" class="cn.chan.aop.Customer"/>
-    <bean id="addCustomer" class="cn.chan.aop.AddCustomer"/>
-
-    <!--开启Aop注解-->
-    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-
- <!--   <aop:config>
-
-        &lt;!&ndash;配置切入点&ndash;&gt;
-        <aop:pointcut id="pointcut1" expression="execution(* cn.chan.aop.Customer.*(..))"></aop:pointcut>
-
-
-        &lt;!&ndash;配置切面：把增强用到方法上面&ndash;&gt;
-        <aop:aspect ref="addCustomer">
-
-            <aop:before method="before" pointcut-ref="pointcut1"></aop:before>
-            <aop:after method="after" pointcut-ref="pointcut1"></aop:after>
-
-        </aop:aspect>
+        <property name="dataSource" ref="dataSource"></property>
         
-    </aop:config>-->
+        <property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
+
+    </bean>
+
+
+    <!--<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+
+
+    </bean>-->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate" p:sessionFactory-ref="sessionFactory"/>
+
+
+
+
+
+
+
+
 </beans>

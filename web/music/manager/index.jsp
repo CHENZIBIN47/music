@@ -122,7 +122,7 @@ var a=1;
             	<a class="a_list a_list1">歌曲管理</a>
                 <div class="menu_list menu_list_first">
                 	<a href="">添加歌曲</a>
-                    <a href="">查看歌曲</a>
+                    <a href="/songallSong.action">查看歌曲</a>
                 </div>
             </li>
             <li>
@@ -153,7 +153,7 @@ var a=1;
   
 </div>
 	<div id="aaa">
-	<table class="table_list">
+	<%--<table class="table_list">--%>
 		    <%--<c:forEach items="${allSong }" begin="1" end="1">
 		 	<tr>
 				<th>歌曲</th>
@@ -250,69 +250,102 @@ var a=1;
 
 
 
-				<table class="table_list">
-					<s:if test="singerList">
-					<tr>
-						<th>歌手</th>
-						<th>性别</th>
-						<th>简介</th>
-						<th>操作</th>
-					</tr>
-					</s:if>
-					<s:iterator value="singerList" var="singer">
-						<tr>
-							<td><s:property value="#singer.singername"/></td>
-							<td><s:property value="#singer.sex"/></td>
-							<td><s:property value="#singer.singerinfo"/></td>
-							<td><a href="#">删除</a>|
-								<a href="#">修改</a>
-							</td>
+		<table class="table_list">
+			<s:if test="songList">
+				 <tr>
+					<th>歌曲</th>
+					<th>歌手</th>
+					<th>专辑</th>
+					<th>操作</th>
+				</tr>
+			</s:if>
+		<s:iterator value="songList" var="song">
 
-						</tr>
-
-
-					</s:iterator>
-				</table>
-
-				<table class="table_user">
-					<s:if test="userList">
-						<tr>
-							<th>用户名</th>
-							<th>密码</th>
-							<th>性别</th>
-							<th>邮箱</th>
-							<th>状态</th>
-							<th>操作</th>
-						</tr>
-					</s:if>
+			<tr>
+				<td>
+					<%--<input type="text" name="input1" value="${as.songname }" disabled="true" class="q"/>--%>
+					<s:property value="#song.songname"/>
+				</td>
+				<td>
+					<%--<input type="text" name="input1" value="${as.singername }" disabled="true" />--%>
+					<s:property value="#song.singername"/>
+				</td>
+				<td>
+					<%--<input type="text" name="input1" value="${as.album }" disabled="true" />--%>
+					<s:property value="#song.album"/>
+				</td>
+				<td>
+					<a href="">删除</a>|
+					<a href="">修改</a>
+				</td>
+			</tr>
+		</s:iterator>
+      </table>
 
 
-					<s:iterator value="userList" var="user">
+            <table class="table_list">
+                <s:if test="singerList">
+                <tr>
+                    <th>歌手</th>
+                    <th>性别</th>
+                    <th>简介</th>
+                    <th>操作</th>
+                </tr>
+                </s:if>
+                <s:iterator value="singerList" var="singer">
+                    <tr>
+                        <td><s:property value="#singer.singername"/></td>
+                        <td><s:property value="#singer.sex"/></td>
+                        <td><s:property value="#singer.singerinfo"/></td>
+                        <td><a href="#">删除</a>|
+                            <a href="#">修改</a>
+                        </td>
 
-						<tr>
-							<td><s:property value="#user.username"/></td>
-							<td><s:property value="#user.password"/></td>
-							<td><s:property value="#user.sex"/></td>
-							<td><s:property value="#user.email"/></td>
-							<s:if test="#user.state">
-								<td>已激活</td>
-							</s:if>
-							<s:else>
-								<td>未激活</td>
-							</s:else>
+                    </tr>
 
-							<td>
-								<a id="delUser" href="userdelUser.action?uid=<s:property value="#user.userid"/>" onclick="if(confirm('是否删除？')==false)return false">删除</a>
 
-							</td>
+                </s:iterator>
+            </table>
 
-						</tr>
+            <table class="table_user">
+                <s:if test="userList">
+                    <tr>
+                        <th>用户名</th>
+                        <th>密码</th>
+                        <th>性别</th>
+                        <th>邮箱</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </s:if>
 
-					</s:iterator>
-	
-	</table>
-	</div>
-  </body>
+
+                <s:iterator value="userList" var="user">
+
+                    <tr>
+                        <td><s:property value="#user.username"/></td>
+                        <td><s:property value="#user.password"/></td>
+                        <td><s:property value="#user.sex"/></td>
+                        <td><s:property value="#user.email"/></td>
+                        <s:if test="#user.state">
+                            <td>已激活</td>
+                        </s:if>
+                        <s:else>
+                            <td>未激活</td>
+                        </s:else>
+
+                        <td>
+                            <a id="delUser" href="userdelUser.action?uid=<s:property value="#user.userid"/>" onclick="if(confirm('是否删除？')==false)return false">删除</a>
+
+                        </td>
+
+                    </tr>
+
+                </s:iterator>
+
+</table>
+</div>
+</body>
 
 
 </html>

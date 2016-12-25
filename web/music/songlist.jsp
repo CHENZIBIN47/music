@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%@include file="header.jsp" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -40,28 +41,33 @@
 			</ul>
 		
 			<div class ="aaa">
-				 
-		  	
-	<c:forEach items="${songname }" var="str">
-		  	
+
+		  	<s:iterator value="songList" var="song">
+
 		  <div class="songlist__number  songlist__number--top">1</div>
 		  			   
 		 <div class="a">
-		<p class="songlist__songname_txt" >${str.singername }</p>
+		<p class="songlist__songname_txt" ><s:property value="#song.singername"/> </p>
 		</div>
 		 <div class="songlist__artist">
-		   <p class="singer_name" style="text-align:left">${str.songname}</p>
+		   <p class="singer_name" style="text-align:left"><s:property value="#song.songname"/> </p>
 		  </div>
 		   <!--图标-->
 		 <div class="mod_list_menu">
-		<a href="<c:url value='/SingerServlet?method=findsinger&path=${str.path }&songname=${str.songname}&singername=${str.singername }'/>"><img class="play"src="music/images/play48.png"/></a>
-		<a href="<c:url value='/UserCollectionServlet?method=collection&songname=${str.songname}&singername=${str.singername }&username=${username }&songpath=${str.path }'/>"><img class="play" src="music/images/plus49.png"/></a>
-		<a href="javascript:;"><img class="play" src="music/images/download.png"/></a>
+		<a href="">
+			<img class="play"src="music/images/play48.png"/>
+		</a>
+		<a href="">
+			<img class="play" src="music/images/plus49.png"/>
+		</a>
+		<a href="javascript:;">
+			<img class="play" src="music/images/download.png"/>
+		</a>
 		 </div>
 		 <div class="songlist__time">03:05</div>
 		
- 	 </c:forEach>
 
+			</s:iterator>
 		 </div>
 			
 	<div id="xuhao">

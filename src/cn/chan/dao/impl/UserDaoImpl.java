@@ -6,12 +6,22 @@ import cn.chan.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 
 import java.util.List;
 
 
 public class UserDaoImpl implements UserDao {
 
+    private HibernateTemplate hibernateTemplate;
+
+    public HibernateTemplate getHibernateTemplate() {
+        return hibernateTemplate;
+    }
+
+    public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+        this.hibernateTemplate = hibernateTemplate;
+    }
 
     /**
      * 注册用户
